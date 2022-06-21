@@ -50,7 +50,7 @@ posts = [
 @app.route("/home")
 def home():
     #zwracamy stronę html
-    return render_template('home.html', posts=posts)  #dzięki temu będziemy mieć dostęp do postów w pliku html
+    return render_template('home.html', posts=posts)  
 
 
 @app.route("/about")
@@ -71,7 +71,7 @@ def register():
         flash(f'Poprawnie utworzono użytkownika {form.username.data}! Można się zalogować', 'success')
         #jeżeli poprawnie się zarejestrował to
         return redirect(url_for('login'))
-    return render_template('register.html', title='Rejestracja', form=form) #przekazujemy tę instancję RegistrationForm!!
+    return render_template('register.html', title='Rejestracja', form=form) #przekazujemy tę instancję RegistrationForm
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
