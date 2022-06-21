@@ -4,7 +4,6 @@ from website.forms import RegistrationForm, LoginForm, ExchangeForm
 from website.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 from website import prices
-#forms pozwalają na sprawdzenie podawanych przez użytkownika danych
 
 posts = [
     {
@@ -82,7 +81,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()  #sprawdzamy czy jest taki email w bazie
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user)                                        #, remember=form.remember.data
+            login_user(user)                                        
             #next_page to strona która wybraliśmy zanim przenieśliśmy się na strone logowania
             #(np nie mielismy dostępu do niej i nas przeniosło)
             next_page = request.args.get('next')
